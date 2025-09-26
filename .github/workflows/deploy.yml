@@ -1,0 +1,19 @@
+name: Deploy to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout private repo
+        uses: actions/checkout@v4
+
+      - name: Deploy to public repo
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.DEPLOY_TOKEN }} # Uses the secret for authentication
+          repository-name: <fancy489-dev>/<deploy_to_public> # E.g., your-username/my-project-public
+          branch: main # Deploys to the gh-pages branch of the public repo
+          folder: . # The folder containing your final website files
