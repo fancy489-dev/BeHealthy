@@ -17,3 +17,4 @@ jobs:
           repository-name: fancy489-dev/deploy_to_public # E.g., your-username/my-project-public
           branch: main # Deploys to the gh-pages branch of the public repo
           folder: . # The folder containing your final website files
+          clean: true
