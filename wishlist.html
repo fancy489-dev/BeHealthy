@@ -476,7 +476,7 @@
                                             <td class="stock text-center">
                                                 <span class="in-stock">in stock</span>
                                             </td>
-                                            <td class="product-subtotal text-center"><button type="button" class="btn btn-small">Add To Cart</button></td>
+                                            <td class="product-subtotal text-center"><button type="button" class="btn btn-small" onclick="fetch_token()">Add To Cart</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -614,6 +614,31 @@
         <script src="assets/js/lazysizes.js"></script>
         <script src="assets/js/main.js"></script>
     </div>
+
+<script>
+    async function fetch_token(){
+       fetch('/gittoken.json')
+        .then(response => {
+            if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const token = data.token;
+            console.log("Token:", token); 
+                return data.token;
+
+        })
+        .catch(error => {
+            console.error("Failed to fetch token:", error);
+                return null;
+
+        });
+
+    }
+
+</script>  
 </body>
 
 
